@@ -78,7 +78,7 @@ The quickest way to get up and running is to use the deploy button below to set 
 | `BUILD_LANGUAGES`                  | The supported locales (the default is `en-US, it-IT, fr-FR`).                                                                                                                                                                                                 |
 | `NEXT_PUBLIC_SITE_NAME`            | Optional name for the `<title>` head tag (you can also edit this directly in the code).                                                                                                                                                                       |
 | `NEXT_PUBLIC_SITE_URL`             | Optional URL of your deployed project for the `og:url` meta property (you can also edit this directly in the code).                                                                                                                                           |
-| `NEXT_PUBLIC_CL_CLIENT_ID`         | Your Commerce Layer sales channels application client ID (you can create this automatically by following this [onboarding guide](https://docs.commercelayer.io/developers) or manually on the [Commerce Layer dashboard](https://dashboard.commercelayer.io). |
+| `NEXT_PUBLIC_CL_CLIENT_ID`         | Your Commerce Layer sales channels application client ID (you can create this automatically by following this [onboarding guide](https://docs.commercelayezr.io/developers) or manually on the [Commerce Layer dashboard](https://dashboard.commercelayer.io). |
 | `NEXT_PUBLIC_CL_ENDPOINT`          | Your Commerce Layer organization's base endpoint (you can copy this on the [Commerce Layer dashboard](https://dashboard.commercelayer.io).                                                                                                                    |
 | `NEXT_PUBLIC_SANITY_PROJECT_TITLE` | Optional name for the `<title>` head tag in Sanity studio (you can also edit this directly in the code).                                                                                                                                                      |
 | `NEXT_PUBLIC_SANITY_PROJECT_ID`    | Sanity project ID (you can get this from [sanity.io/manage](https://sanity.io/manage) after creating a new project with the `npm -y create sanity@latest` CLI command or this [quick start wizard](https://sanity.io/get-started).                            |
@@ -117,13 +117,16 @@ This will run the storefront at `localhost:3000` and studio at `localhost:3000/s
 npm install -g @commercelayer/cli
 
 //yarn
-yarn global add @commercelayer/cli
+yarn global add @commercelayer/cli  
 ```
 
 6. Log into your application via the CLI using the previously created CLI credentials like so:
 
 ```bash
-cl applications:login -o <organizationSlug> -i <clientId> -s <clientSecret> -a <applicationAlias>
+cl applications:login -o <organizationSlug> -i <clientId> -s <clientSecret> -a <`applicationAlias`>
+cl applications:login -o Silk Road treasure -i R67ZZjRziVErAEtq8-5dCmQVDLiFRyOSBECyn2Fb5VA -s 3uTG5y_lS1OhEGBnYEi3JpF8Hk5mObOo91BOEWhjFhs
+ -a 4200
+
 ```
 
 7. Install the [seeder plugin](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/main/README.md) using the command below:
@@ -160,6 +163,8 @@ The extracted folder name should look like `production-export-2021-02-26t14-15-5
 
 ```bash
 sanity dataset import ./data/<name of extracted folder>/data.ndjson <your_dataset>
+sanity dataset import ./data/production-export-2023-03-23t19-38-59-082z/data.ndjson production
+
 ```
 
 3. Check the Sanity studio now on `localhost:3000/studio` to preview the imported content.
@@ -184,7 +189,7 @@ sanity dataset import ./data/<name of extracted folder>/data.ndjson <your_datase
 
 Eventually, you would want to set up commerce data in Commerce Layer manually and add your content data in Sanity based on your use case. To ensure the template runs smoothly, kindly do the following:
 
-1. In the [Commerce Layer dashboard](https://dashboard.commercelayer.io), create a [market](https://docs.commercelayer.io/core/v/api-reference/markets) (if you need a new one) associated with a [stock location](https://docs.commercelayer.io/core/v/api-reference/stock_locations), [stock item](https://docs.commercelayer.io/core/v/api-reference/stock_items), [price list](https://docs.commercelayer.io/core/v/api-reference/price_lists), [price](https://docs.commercelayer.io/core/v/api-reference/prices), and [SKU](https://docs.commercelayer.io/core/v/api-reference/skus)(s) and add a new `Country` content in Sanity using a valid `market ID` attribute.
+1. In the [Commerce Layer dashboard](https://dashboard.commercelayer.io), create a [market](https://docs.commercelayer.io/core/v/api-reference/markets) (if you need a new one) associated with a [stock location](https://docs.commercelayer.io/core/v/api-reference/stock_locations), [stock item](https://docs.commercelayer.io/core/v/api-reference/stock_items), [price list](https://docs.commercelayer.io/core/v/api-r`eference/price_lists), [price](https://docs.commercelayer.io/core/v/api-reference/prices), and [SKU](https://docs.commercelayer.io/core/v/api-reference/skus)(s) and add a new `Country` content in Sanity using a valid `market ID` attribute.
 
 2. In the Sanity studio, add the content for the new SKUs as a `Variant` and associate them with a `Product` content model. You can then go ahead to update other content models like `Taxon`, `Taxonomy`, and `Catalog` as you deem fit.
 
